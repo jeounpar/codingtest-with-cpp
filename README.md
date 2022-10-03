@@ -1,1 +1,1 @@
-# samsung-sw-codingtest
+# codingtest-with-cpp
