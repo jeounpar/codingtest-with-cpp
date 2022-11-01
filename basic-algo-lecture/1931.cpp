@@ -4,7 +4,7 @@ using namespace std;
 
 bool compare(pair<int, int> v1, pair<int, int> v2)
 {
-	if (v1.second == v2.second) // 같으면 시작시간 빠른 것 부터 나열
+	if (v1.second == v2.second)
 		return v1.first < v2.first;
 	return v1.second < v2.second;
 }
