@@ -1,10 +1,8 @@
 a.out
+.DS_Store
 *.dsYM
 programmers.cpp
 .vscode
-현대소프티어
-현대소프티어/*
-class101
-class101/*
-kakao-mobil
-kakao-mobil/*
+현대소프티어/
+class101/
+kakao-mobil/
