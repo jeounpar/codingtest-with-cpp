@@ -3,22 +3,24 @@
 using namespace std;
 typedef long long ll;
 
-int d[100];
+int t;
+int d[12];
 int main(void) {
   ios_base::sync_with_stdio(0);
   cin.tie(0);
-  int t;
+  cout.tie(0);
+
   cin >> t;
+  d[0] = 1;
   d[1] = 1;
   d[2] = 2;
-  d[3] = 4;
-  for (int i = 4; i <= 30; i++) {
+  for (int i = 3; i < 11; i++) {
     d[i] = d[i - 1] + d[i - 2] + d[i - 3];
   }
+  int n;
   while (t--) {
-    int k;
-    cin >> k;
-    cout << d[k] << "\n";
+    cin >> n;
+    cout << d[n] << "\n";
   }
   return 0;
 }
