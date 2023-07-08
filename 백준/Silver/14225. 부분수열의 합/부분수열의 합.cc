@@ -7,7 +7,7 @@ int n;
 vector<int> vc;
 bool ok[20 * 100000 + 3];
 
-void solve(int len, int idx, vector<int> tmp) {
+void solve(int len, int idx, vector<int> &tmp) {
   if (tmp.size() == len) {
     int sum = 0;
     for (auto a : tmp)
@@ -35,8 +35,9 @@ int main(void) {
     vc.push_back(t);
   }
   sort(vc.begin(), vc.end());
+  vector<int> tmp;
   for (int len = 1; len <= n; len++) {
-    solve(len, 0, {});
+    solve(len, 0, tmp);
   }
   for (int i = 1; i <= 20 * 100000; i++) {
     if (!ok[i]) {
