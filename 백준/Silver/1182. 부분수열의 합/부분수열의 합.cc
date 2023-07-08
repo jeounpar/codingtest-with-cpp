@@ -13,6 +13,7 @@ void solve(int len, int idx, vector<int> tmp) {
       sum += a;
     if (sum == s)
       answer++;
+    return;
   }
   for (int i = idx; i < n; i++) {
     tmp.push_back(vc[i]);
