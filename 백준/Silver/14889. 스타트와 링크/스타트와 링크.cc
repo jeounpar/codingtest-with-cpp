@@ -1,57 +1,53 @@
-#include<iostream>
-#include<math.h>
+#include <bits/stdc++.h>
+
 using namespace std;
+typedef long long ll;
 
-int stats[21][21];
-bool check[22];
-int N;
-int ans = 1000000000; // 10억
+int n;
+int score[21][21];
+int ans = INT_MAX;
 
-void DFS(int x, int pos) // x는 카운트 수, pos는 다음 값
-{
-	if (x == N / 2) // 카운트수가 정원의 1/2이 됐을 때 능력치합 계산
-	{
-		int start, link;
-		start = 0;
-		link = 0;
+void solve(vector<int> &a, vector<int> &b, int idx) {
+  if (idx == n + 1) {
+    if (a.size() != n / 2 || b.size() != n / 2) {
+      return;
+    }
+    if (a.size() == n / 2 && b.size() == n / 2) {
+      int sum_a = 0;
+      int sum_b = 0;
+      for (int i = 0; i < n / 2; i++) {
+        for (int j = 0; j < n / 2; j++) {
+          sum_a += score[a[i]][a[j]];
+          sum_b += score[b[i]][b[j]];
+        }
+      }
+      if (abs(sum_a - sum_b) < ans)
+        ans = abs(sum_a - sum_b);
+      // cout << sum_a << " " << sum_b << "\n";
+      return;
+    }
+  }
 
-		for (int i = 1; i <= N; i++)
-		{
-			for (int j = 1; j <= N; j++)
-			{
-				if (check[i] == true && check[j] == true) start += stats[i][j];
-				if (check[i] == false && check[j] == false) link += stats[i][j];
-			}
-		}
-
-		int temp = abs(start - link);
-		if (ans > temp) ans = temp;
-
-		return;
-	}
-
-	for (int i = pos; i < N; i++)
-	{
-		check[i] = true;
-		DFS(x + 1, i + 1);
-		check[i] = false;
-	}
-
+  a.push_back(idx);
+  solve(a, b, idx + 1);
+  a.pop_back();
+  b.push_back(idx);
+  solve(a, b, idx + 1);
+  b.pop_back();
 }
 
-int main()
-{
-	cin >> N;
+int main(void) {
+  ios_base::sync_with_stdio(0);
+  cin.tie(0);
+  cout.tie(0);
 
-	for (int i = 1; i <= N; i++)
-	{
-		for (int j = 1; j <= N; j++)
-		{
-			cin >> stats[i][j];
-		}
-	}
+  cin >> n;
+  for (int i = 1; i <= n; i++)
+    for (int j = 1; j <= n; j++)
+      cin >> score[i][j];
 
-	DFS(0, 1); // 카운트 0회부터 숫자는 1부터 시작
-
-	cout << ans;
+  vector<int> a, b;
+  solve(a, b, 1);
+  cout << ans;
+  return 0;
 }
