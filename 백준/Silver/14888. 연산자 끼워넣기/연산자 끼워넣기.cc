@@ -4,8 +4,42 @@ using namespace std;
 typedef long long ll;
 
 int n;
+int op[4];
+int max_ans = INT_MIN;
+int min_ans = INT_MAX;
 vector<int> vc;
-vector<int> op;
+
+void solve(int idx, int sum) {
+  // cout << sum << " ";
+  if (idx == n) {
+    if (sum > max_ans)
+      max_ans = sum;
+    if (sum < min_ans)
+      min_ans = sum;
+    return;
+  }
+  if (op[0] > 0) {
+    op[0]--;
+    solve(idx + 1, sum + vc[idx]);
+    op[0]++;
+  }
+  if (op[1] > 0) {
+    op[1]--;
+    solve(idx + 1, sum - vc[idx]);
+    op[1]++;
+  }
+  if (op[2] > 0) {
+    op[2]--;
+    solve(idx + 1, sum * vc[idx]);
+    op[2]++;
+  }
+  if (op[3] > 0) {
+    op[3]--;
+    solve(idx + 1, sum / vc[idx]);
+    op[3]++;
+  }
+}
+
 int main(void) {
   ios_base::sync_with_stdio(0);
   cin.tie(0);
@@ -18,48 +52,10 @@ int main(void) {
     vc.push_back(t);
   }
   for (int i = 0; i < 4; i++) {
-    cin >> t;
-    for (int k = 0; k < t; k++) {
-      op.push_back(i);
-    }
+    cin >> op[i];
   }
-  int max_ans = INT_MIN;
-  int min_ans = INT_MAX;
-  do {
-    int rst = 0;
-    switch (op[0]) {
-    case 0:
-      rst = vc[0] + vc[1];
-      break;
-    case 1:
-      rst = vc[0] - vc[1];
-      break;
-    case 2:
-      rst = vc[0] * vc[1];
-      break;
-    case 3:
-      rst = vc[0] / vc[1];
-      break;
-    }
-    for (int i = 1; i < n - 1; i++) {
-      switch (op[i]) {
-      case 0:
-        rst = rst + vc[i + 1];
-        break;
-      case 1:
-        rst = rst - vc[i + 1];
-        break;
-      case 2:
-        rst = rst * vc[i + 1];
-        break;
-      case 3:
-        rst = rst / vc[i + 1];
-        break;
-      }
-    }
-    max_ans = max(max_ans, rst);
-    min_ans = min(min_ans, rst);
-  } while (next_permutation(op.begin(), op.end()));
+  solve(1, vc[0]);
+  // cout << "\n";
   cout << max_ans << "\n" << min_ans;
   return 0;
 }
