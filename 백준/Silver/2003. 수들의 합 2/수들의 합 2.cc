@@ -21,18 +21,16 @@ int main(void) {
     pre_sum[i] = pre_sum[i - 1] + vc[i];
   }
   int ans = 0;
-  for (int i = 1; i <= n; i++) {
-    if (pre_sum[i] == m)
-      ans++;
-  }
-
-  for (int i = 1; i <= n; i++) {
-    for (int j = i + 1; j <= n; j++) {
-      if (pre_sum[j] - pre_sum[i] == m) {
+  int left = 0;
+  int right = 0;
+  while (right <= n) {
+    ll csum = pre_sum[right] - pre_sum[left];
+    if (csum <= m) {
+      if (csum == m)
         ans++;
-        break;
-      }
-    }
+      right++;
+    } else
+      left++;
   }
   cout << ans;
   return 0;
