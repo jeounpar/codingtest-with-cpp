@@ -3,12 +3,11 @@
 using namespace std;
 typedef long long ll;
 int answer = 0;
+int n, m;
 
 void solve(int test_case) {
   answer = 0;
-  int n, m;
   cin >> n >> m;
-  string s;
   for (int i = 0; i < n; i++) {
     if (!(m & (1 << i))) {
       cout << "#" << test_case << " OFF"
