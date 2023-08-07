@@ -2,12 +2,11 @@
 
 using namespace std;
 typedef long long ll;
-unordered_set<char> us;
 
 void solve(int test_case) {
   int answer = 0;
   int n;
-  us.clear();
+  unordered_set<char> us;
   cin >> n;
   int t = 0;
   int k = n;
@@ -17,7 +16,6 @@ void solve(int test_case) {
     for (int i = 0; i < slen; i++) {
       us.insert(s[i]);
     }
-    // cout << us.size() << "\n";
     if (us.size() == 10)
       break;
     t++;
