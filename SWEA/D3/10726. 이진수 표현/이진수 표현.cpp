@@ -8,15 +8,15 @@ int n, m;
 void solve(int test_case) {
   answer = 0;
   cin >> n >> m;
-  for (int i = 0; i < n; i++) {
-    if (!(m & (1 << i))) {
-      cout << "#" << test_case << " OFF"
-           << "\n";
-      return;
-    }
+  int mask = (1 << n) - 1;
+  int rst = mask & m;
+  if (rst != mask) {
+    cout << "#" << test_case << " OFF"
+         << "\n";
+  } else {
+    cout << "#" << test_case << " ON"
+         << "\n";
   }
-  cout << "#" << test_case << " ON"
-       << "\n";
 }
 
 int main(int argc, char **argv) {
