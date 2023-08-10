@@ -31,12 +31,14 @@ public class Solution {
 				for (int j = 0; j <= k; j++) {
 					dp[i][j] = dp[i - 1][j];
 					if (v[i] <= j) {
-						dp[i][j] = Math.max(dp[i][j], dp[i - 1][j - v[i]] + c[i]);
+						if (dp[i - 1][j - v[i]] + c[i] > dp[i][j])
+							dp[i][j] = dp[i - 1][j - v[i]] + c[i];
 					}
 				}
 			}
 			for (int i = 0; i <= k; i++) {
-				answer = Math.max(answer, dp[n][i]);
+				if (dp[n][i] > answer)
+					answer = dp[n][i];
 			}
 			sb.append("#").append(test_case).append(" ").append(answer).append("\n");
 		}
