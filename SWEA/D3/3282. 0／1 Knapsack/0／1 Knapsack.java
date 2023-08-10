@@ -38,9 +38,9 @@ public class Solution {
 			for (int i = 0; i <= k; i++) {
 				answer = Math.max(answer, dp[n][i]);
 			}
-			bw.write("#" + test_case + " " + answer);
-			bw.newLine();
+			sb.append("#").append(test_case).append(" ").append(answer).append("\n");
 		}
+		bw.write(sb.toString());
 		bw.flush();
 		bw.close();
 		br.close();
