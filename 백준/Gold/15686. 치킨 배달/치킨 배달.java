@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 
+// 15,464kb	228ms
 public class Main {
 	static int answer = Integer.MAX_VALUE;
 	static int n, m, h_size, c_size;
@@ -62,9 +63,7 @@ public class Main {
 		}
 		h_size = homes.size();
 		c_size = chickens.size();
-		for (int i = 1; i <= m; i++) {
-			solve(0, 0, i);
-		}
+			solve(0, 0, m);
 		bw.write(Integer.toString(answer));
 		bw.flush();
 		bw.close();
