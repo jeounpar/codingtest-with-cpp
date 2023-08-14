@@ -1,16 +1,17 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-int n, m;
-char board[1001][1001];
-int dist[1001][1001][2];
+
 int dx[4] = {0, 0, 1, -1};
 int dy[4] = {1, -1, 0, 0};
+char board[1001][1001];
+int dist[1001][1001][2];
 
 int main(void)
 {
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
+	int n, m;
 	cin >> n >> m;
 	for (int i = 1; i <= n; i++)
 		for (int j = 1; j <= m; j++)
@@ -51,6 +52,6 @@ int main(void)
 			}
 		}
 	}
-	cout << -1 << "\n";
+	cout << -1;
 	return 0;
 }
