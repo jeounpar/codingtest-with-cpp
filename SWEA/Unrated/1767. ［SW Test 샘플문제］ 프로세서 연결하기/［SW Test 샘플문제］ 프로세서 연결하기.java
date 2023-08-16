@@ -18,37 +18,15 @@ public class Solution {
 			this.x = x;
 			this.y = y;
 		}
-
-//		@Override
-//		public String toString() {
-//			return "Pair{" +
-//					"x=" + x +
-//					", y=" + y +
-//					'}';
-//		}
 	}
 
 	static void solve(int idx, int coreCnt, int lineCnt) {
 		if (idx == maxArraySize) {
 			if (coreCnt > maxCore) {
-//				System.out.println(coreCnt + " " + lineCnt);
-//				for (int i = 0; i < n; i++) {
-//					for (int j = 0; j < n; j++) {
-//						System.out.print(arr[i][j] + " ");
-//					}
-//					System.out.println();
-//				}
 				maxCore = coreCnt;
 				minLine = lineCnt;
 			}
 			if (maxCore == coreCnt && lineCnt < minLine) {
-//				System.out.println(coreCnt + " " + lineCnt);
-//				for (int i = 0; i < n; i++) {
-//					for (int j = 0; j < n; j++) {
-//						System.out.print(arr[i][j] + " ");
-//					}
-//					System.out.println();
-//				}
 				minLine = lineCnt;
 			}
 			return;
@@ -59,12 +37,10 @@ public class Solution {
 			int ny = cur.y + dy[i];
 			boolean flag = false;
 			while (true) {
-				if ((nx == 0 || nx == n - 1|| ny == 0 || ny == n - 1) && arr[nx][ny] == 0) {
+				if ((nx == 0 || nx == n - 1 || ny == 0 || ny == n - 1) && arr[nx][ny] == 0) {
 					flag = true;
 					break;
-				}
-				if (arr[nx][ny] > 0) {
-					flag = false;
+				} else if (arr[nx][ny] > 0) {
 					break;
 				}
 				nx += dx[i];
@@ -126,11 +102,8 @@ public class Solution {
 					}
 				}
 			}
+
 			maxArraySize = cells.size();
-//			System.out.println(maxCore);
-//			for (Pair pair : cells) {
-//				System.out.println(pair);
-//			}
 			solve(0, maxCore, 0);
 
 			sb.append("#").append(test_case).append(" ").append(minLine).append("\n");
