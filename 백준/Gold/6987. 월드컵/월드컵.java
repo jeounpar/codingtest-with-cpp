@@ -107,10 +107,7 @@ public class Main {
 				}
 			}
 			if (flag) {
-				int[][] teamA = new int[6][3];
-				int[][] teamB = new int[6][3];
 				solve(0);
-
 			}
 			sb.append(answer).append(" ");
 		}
