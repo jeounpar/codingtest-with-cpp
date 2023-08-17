@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.*;
 
+// 21,740kb   134ms
 public class Solution {
 	static int answer = 0;
 	static int sumA, sumB;
@@ -197,14 +198,6 @@ public class Solution {
 			this.x = x;
 			this.y = y;
 		}
-
-		@Override
-		public String toString() {
-			return "Person{" +
-					"x=" + x +
-					", y=" + y +
-					'}';
-		}
 	}
 
 	static class Tuple {
@@ -229,14 +222,6 @@ public class Solution {
 			this.p = p;
 			this.idx = idx;
 		}
-
-		@Override
-		public String toString() {
-			return "AP{" +
-					"c=" + c +
-					", p=" + p +
-					'}';
-		}
 	}
 
 	static class Data {
@@ -248,15 +233,6 @@ public class Solution {
 			this.x = x;
 			this.y = y;
 			this.apList = new ArrayList<>();
-		}
-
-		@Override
-		public String toString() {
-			return "Data{" +
-					"x=" + x +
-					", y=" + y +
-					", apList=" + apList +
-					'}';
 		}
 	}
 }
