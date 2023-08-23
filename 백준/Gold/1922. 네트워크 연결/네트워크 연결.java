@@ -18,7 +18,7 @@ public class Main {
 	static void union(int a, int b) {
 		int x = find(a);
 		int y = find(b);
-		arr[x] = y;
+		arr[y] = x;
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -56,7 +56,7 @@ public class Main {
 				union(cur.x, cur.y);
 			}
 		}
-		
+
 		bw.write(Integer.toString(answer));
 		bw.flush();
 		bw.close();
