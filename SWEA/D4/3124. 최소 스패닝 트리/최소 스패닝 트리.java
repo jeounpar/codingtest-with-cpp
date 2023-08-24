@@ -5,7 +5,7 @@ public class Solution {
 	static long answer = 0;
 	static int v, e;
 	static Tuple[] tuples;
-	static int[] parents;
+	static int[] parents, rank;
 	static StringBuilder sb = new StringBuilder();
 
 	static class Tuple implements Comparable<Tuple> {
@@ -56,13 +56,14 @@ public class Solution {
 				tuples[i] = new Tuple(x, y, dist);
 			}
 
-
+			Arrays.sort(tuples);
 			parents = new int[v + 1];
+			rank = new int[v + 1];
 			for (int i = 1; i <= v; i++) {
 				parents[i] = i;
+				rank[i] = 0;
 			}
 
-			Arrays.sort(tuples);
 			for (int i = 0; i < e; i++) {
 				int a = tuples[i].x;
 				int b = tuples[i].y;
