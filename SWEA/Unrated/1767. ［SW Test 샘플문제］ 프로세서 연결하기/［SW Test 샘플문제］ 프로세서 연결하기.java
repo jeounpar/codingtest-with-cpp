@@ -50,8 +50,7 @@ public class Solution {
 				nx = cur.x + dx[i];
 				ny = cur.y + dy[i];
 				int lineTmp = 0;
-				while (true) {
-					if (nx < 0 || nx >= n || ny < 0 || ny >= n) break;
+				while (nx >= 0 && nx < n && ny >= 0 && ny < n) {
 					lineTmp++;
 					arr[nx][ny] = 2;
 					nx += dx[i];
@@ -89,17 +88,11 @@ public class Solution {
 				st = new StringTokenizer(br.readLine());
 				for (int j = 0; j < n; j++) {
 					arr[i][j] = Integer.parseInt(st.nextToken());
-					if (i == 0 && arr[i][j] == 1)
-						maxCore++;
-					else if (i == n - 1 && arr[i][j] == 1)
-						maxCore++;
-					else if (j == 0 && arr[i][j] == 1)
-						maxCore++;
-					else if (j == n - 1 && arr[i][j] == 1)
-						maxCore++;
-					else if (arr[i][j] == 1) {
-						cells.add(new Pair(i, j));
-					}
+					if (i == 0 && arr[i][j] == 1) maxCore++;
+					else if (i == n - 1 && arr[i][j] == 1) maxCore++;
+					else if (j == 0 && arr[i][j] == 1) maxCore++;
+					else if (j == n - 1 && arr[i][j] == 1) maxCore++;
+					else if (arr[i][j] == 1) cells.add(new Pair(i, j));
 				}
 			}
 
